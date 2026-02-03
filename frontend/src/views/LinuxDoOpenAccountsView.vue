@@ -302,14 +302,15 @@
         </template>
       </div>
 
-      <LinuxDoUserPopover
-        v-if="linuxDoUser"
-        :user="linuxDoUser"
-        :avatar-url="avatarUrl"
-        :display-name="linuxDoDisplayName"
-        :trust-level-label="trustLevelLabel"
-        @reauthorize="handleReauthorize"
-      />
+	      <LinuxDoUserPopover
+	        v-if="linuxDoUser"
+	        :user="linuxDoUser"
+	        :avatar-url="avatarUrl"
+	        :display-name="linuxDoDisplayName"
+	        :trust-level-label="trustLevelLabel"
+	        :github-repo-url="githubRepoUrl"
+	        @reauthorize="handleReauthorize"
+	      />
 
 	      <Dialog v-model:open="showEmailDialog">
 	        <DialogContent :showClose="false" class="sm:max-w-[360px] p-0 overflow-hidden rounded-[20px] border-0 shadow-2xl bg-transparent">
@@ -498,6 +499,8 @@
 	import { Dialog, DialogContent, DialogFooter, DialogHeader, DialogTitle, DialogDescription } from '@/components/ui/dialog'
 	import { useToast } from '@/components/ui/toast'
   import { useAppConfigStore } from '@/stores/appConfig'
+
+	const githubRepoUrl = 'https://github.com/Kylsky/chatgpt-team-helper'
 
 	const accounts = ref<OpenAccountItem[]>([])
 	const loading = ref(false)
